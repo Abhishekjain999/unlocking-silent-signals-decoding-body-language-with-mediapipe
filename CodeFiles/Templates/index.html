@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🧠 Body Language Decoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        aside {
+            width: 300px;
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        aside h2 {
+            font-size: 22px;
+        }
+        aside p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        main {
+            flex-grow: 1;
+            padding: 30px;
+            text-align: center;
+        }
+        header {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        img {
+            border: 6px solid #0066cc;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function toggleWebcam() {
+            const img = document.getElementById("video-feed");
+            const button = document.getElementById("toggle-button");
+            if (img.style.display === "none") {
+                img.style.display = "block";
+                img.src = "/video";
+                button.innerText = "Stop Webcam";
+            } else {
+                img.style.display = "none";
+                img.src = "";
+                button.innerText = "Start Webcam";
+            }
+        }
+    </script>
+</head>
+<body>
+    <aside>
+        <h2>About Project</h2>
+        <p>This Body Language Decoder uses your webcam and a trained ML model to recognize poses and expressions using MediaPipe and OpenCV.</p>
+        <p>Choose a class from the dropdown to filter or visualize intent (UI only).</p>
+    </aside>
+    <main>
+        <header>🧠 Body Language Decoder</header>
+        <div>
+            <label for="class-select">Model Class:</label>
+            <select id="class-select">
+                <option>Happy</option>
+                <option>Sad</option>
+                <option>Victorious</option>
+                <option>Fight</option>
+
+            </select>
+        </div>
+        <button id="toggle-button" onclick="toggleWebcam()">Start Webcam</button>
+        <br/>
+        <img id="video-feed" src="" width="800" />
+    </main>
+</body>
+</html>
